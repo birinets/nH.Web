@@ -14,6 +14,6 @@
 	<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
 	
 	<section id="lists" data-bind="foreach: list, visible: list().length > 0">
-		<p data-bind="text: $data"></p>
+		<p data-bind="text: $data, scroll: true"></p>
 	</section>
 </div>

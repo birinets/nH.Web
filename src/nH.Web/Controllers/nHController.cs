@@ -11,6 +11,12 @@ namespace nH.Web.Controllers
 		{
 			return new []
 			{
+				DateTime.Now.ToString(CultureInfo.InvariantCulture),
+				DateTime.Now.ToString(CultureInfo.InvariantCulture),
+				DateTime.Now.ToString(CultureInfo.InvariantCulture),
+				DateTime.Now.ToString(CultureInfo.InvariantCulture),
+				DateTime.Now.ToString(CultureInfo.InvariantCulture),
+				DateTime.Now.ToString(CultureInfo.InvariantCulture),
 				DateTime.Now.ToString(CultureInfo.InvariantCulture)
 			};
 		}

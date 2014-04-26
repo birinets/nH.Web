@@ -1,4 +1,4 @@
-﻿window.nHApp = window.nHApp || { };
+﻿window.nHApp = window.nHApp || {};
 
 window.nHApp.datacontext = (function () {
 
@@ -14,7 +14,7 @@ window.nHApp.datacontext = (function () {
 			.fail(getFailed);
 
 		function getSucceeded(data) {
-			$.each(data, function() {
+			$.each(data, function () {
 				listObservable.push(this);
 			});
 		}
@@ -43,24 +43,3 @@ window.nHApp.datacontext = (function () {
 
 	function listUrl(id) { return "/api/nH/" + (id || ""); }
 })();
-
-window.nHApp.nHViewModel = (function (ko, datacontext) {
-	var list = ko.observableArray(),
-		error = ko.observable();
-
-	datacontext.getList(list, error);
-
-	return {
-		list: list,
-		update: update
-	};
-
-	function update() {
-		console.log(datacontext);
-		datacontext.getList(list, error);
-		window.setTimeout(update, 2000);
-	}
-})(ko, nHApp.datacontext);
-
-window.setTimeout(window.nHApp.nHViewModel.update, 2000);
-ko.applyBindings(window.nHApp.nHViewModel);
