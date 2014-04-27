@@ -1,5 +1,5 @@
 ﻿window.nHApp = window.nHApp || {
-	interval: 2000
+	interval: 10000
 };
 
 window.nHApp.datacontext = (function () {
