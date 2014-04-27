@@ -26,7 +26,7 @@ namespace nH.Web
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			DiConfig.Register(_container, GlobalConfiguration.Configuration);
 
-			//_updater = new CacheUpdater(_container);
+			_updater = new CacheUpdater(_container);
 		}
 
 		protected void Application_End()
