@@ -36,9 +36,10 @@ namespace nH.Web.Infrastructure
 					Id = e.Id,
 					Created = e.StartDate,
 					Message = e.Message,
+					CommitId = s.CommitId,
 					RepoName = r.Name
 				})
-				.Take(5)
+				.Take(50)
 				.OrderBy(e => e.Created);
 		}
 

@@ -10,14 +10,15 @@
 	}
 }
 
-<div id="main-content">
+<div id="main-content" class="main-content">
 	<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
 
 	<section id="lists" data-bind="foreach: list, visible: list().length > 0">
-		<div>
-			<span data-bind="text: created, scroll: true"></span>
-			<span data-bind="text: repo"></span>
-			<span data-bind="text: message"></span>
+		<div class="entry-row">
+			<div data-bind="date: created, scroll: true" class="created-cell"></div>
+			<div data-bind="text: repo" class="repo-cell"></div>
+			<div data-bind="commitText: commitId" class="commit-cell"></div>
+			<div data-bind="text: message" class="message-cell"></div>
 		</div>
 	</section>
 </div>
