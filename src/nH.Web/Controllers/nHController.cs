@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Linq;
 using System.Web.Http;
+
+using nH.Web.Models;
 
 namespace nH.Web.Controllers
 {
 	public class nHController : ApiController
 	{
-		public IEnumerable<string> Get()
+		private readonly ICacheContext _cacheContext;
+
+		public nHController(ICacheContext cacheContext)
 		{
-			return new []
-			{
-				DateTime.Now.ToString(CultureInfo.InvariantCulture)
-			};
+			_cacheContext = cacheContext;
+		}
+
+		public IQueryable Get()
+		{
+			return _cacheContext.Cache.ContainsKey("MainView")
+				? _cacheContext.Cache["MainView"]
+				: null;
 		}
 	}
 }
