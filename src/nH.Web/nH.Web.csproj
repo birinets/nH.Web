@@ -215,6 +215,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CacheContext.cs" />
+    <Compile Include="Models\CacheKeys.cs" />
     <Compile Include="Models\ICacheContext.cs" />
     <Compile Include="Models\RootView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,7 +280,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\app\nH.js" />
+    <Content Include="Scripts\app\nH.bindings.js" />
+    <Content Include="Scripts\app\nH.datacontext.js" />
+    <Content Include="Scripts\app\nH.model.js" />
+    <Content Include="Scripts\app\nH.viewmodel.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

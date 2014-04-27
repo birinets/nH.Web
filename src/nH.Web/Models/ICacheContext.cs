@@ -5,6 +5,6 @@ namespace nH.Web.Models
 {
 	public interface ICacheContext
 	{
-		Dictionary<string, IQueryable> Cache { get; set; }
+		Dictionary<CacheKeys, IQueryable> Cache { get; set; }
 	}
 }

@@ -29,7 +29,10 @@ namespace nH.Web
 				"~/Content/Site.css"));
 
 			bundles.Add(new ScriptBundle("~/bundles/app").Include(
-						"~/Scripts/app/nH.js"));
+				"~/Scripts/app/nH.bindings.js",
+				"~/Scripts/app/nH.datacontext.js",
+				"~/Scripts/app/nH.model.js",
+				"~/Scripts/app/nH.viewmodel.js"));
 
 			bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
 						"~/Content/themes/base/jquery.ui.core.css",

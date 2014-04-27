@@ -12,8 +12,12 @@
 
 <div id="main-content">
 	<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
-	
+
 	<section id="lists" data-bind="foreach: list, visible: list().length > 0">
-		<p data-bind="text: $data"></p>
+		<div>
+			<span data-bind="text: created, scroll: true"></span>
+			<span data-bind="text: repo"></span>
+			<span data-bind="text: message"></span>
+		</div>
 	</section>
 </div>

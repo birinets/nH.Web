@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using LightInject;
+
 using nH.Data.Models;
 using nH.Data.Repositories;
 using nH.Web.Models;
@@ -27,21 +26,20 @@ namespace nH.Web.Infrastructure
 		private void Update()
 		{
 			var context = _container.GetInstance<ICacheContext>();
-			if (!context.Cache.ContainsKey("MainView"))
-			{
-				context.Cache.Add("MainView", null);
-			}
 
-			context.Cache["MainView"] = from e in GetRepository<LogEntry>().GetAll()
+			context.Cache[CacheKeys.RootView] = (from e in GetRepository<LogEntry>().GetAll()
 				join s in GetRepository<Session>().GetAll() on e.SessionId equals s.Id
 				join r in GetRepository<Repository>().GetAll() on s.RepositoryId equals r.Id
+				orderby e.StartDate descending
 				select new RootView
 				{
 					Id = e.Id,
 					Created = e.StartDate,
 					Message = e.Message,
 					RepoName = r.Name
-				};
+				})
+				.Take(5)
+				.OrderBy(e => e.Created);
 		}
 
 		public IDataRepository<T> GetRepository<T>() where T : class
@@ -52,18 +50,6 @@ namespace nH.Web.Infrastructure
 		public void Dispose()
 		{
 			_timer.Dispose();
-		}
-	}
-
-	class DataEntry
-	{
-		public Guid Id { get; private set; }
-		public string Message { get; private set; }
-
-		public DataEntry(Guid id, string message)
-		{
-			Id = id;
-			Message = message;
 		}
 	}
 }
