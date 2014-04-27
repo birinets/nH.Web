@@ -17,9 +17,10 @@ namespace nH.Web.Controllers
 
 		public IQueryable Get()
 		{
-			return _cacheContext.Cache.ContainsKey(CacheKeys.RootView)
-				? _cacheContext.Cache[CacheKeys.RootView]
-				: null;
+			//return _cacheContext.Cache.ContainsKey(CacheKeys.RootView)
+			//	? _cacheContext.Cache[CacheKeys.RootView]
+			//	: null;
+			return null;
 		}
 
 		public IQueryable Get(DateTime date)
