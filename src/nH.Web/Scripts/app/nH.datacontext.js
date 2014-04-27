@@ -72,5 +72,11 @@ window.nHApp.datacontext = (function () {
 	}
 
 	function listUrl(id) { return "/api/nH/" + (id || ""); }
-	function listExtUrl(date) { return "/api/nH?date=" + (date || ""); }
+	function listExtUrl(date) {
+		var url = "/api/nH/";
+		if (date) {
+			url += "?date=" + date;
+		}
+		return url;
+	}
 })();

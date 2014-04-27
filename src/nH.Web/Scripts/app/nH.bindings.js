@@ -20,7 +20,7 @@ ko.bindingHandlers.commitText = {
 		var value = valueAccessor();
 		var valueUnwrapped = ko.utils.unwrapObservable(value);
 		if (valueUnwrapped.length) {
-			$(elem).text(valueUnwrapped.substr(0, 10) + '...');
+			$(elem).text(valueUnwrapped.substr(0, 7) + '...');
 		}
 	}
 }
