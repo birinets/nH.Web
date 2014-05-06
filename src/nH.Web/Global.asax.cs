@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Diagnostics;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -19,7 +21,7 @@ namespace nH.Web
 			_container = new ServiceContainer();
 
 			AreaRegistration.RegisterAllAreas();
-		
+
 			GlobalConfiguration.Configure(WebApiConfig.Register);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -33,6 +35,12 @@ namespace nH.Web
 		{
 			_updater.Dispose();
 			_container.Dispose();
+		}
+
+		protected void Application_Error(object sender, EventArgs e)
+		{
+			var exception = Server.GetLastError();
+			Trace.TraceInformation(exception.Message + " StackTrace: " + exception.StackTrace);
 		}
 	}
 }
