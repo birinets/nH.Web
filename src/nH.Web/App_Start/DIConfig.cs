@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
 using System.Web.Http;
 using LightInject;
@@ -41,14 +40,12 @@ namespace nH.Web
 			var uri = new Uri(uriString);
 			var connectionString = new SqlConnectionStringBuilder
 			{
-				DataSource = uri.Host,
-				InitialCatalog = uri.AbsolutePath.Trim('/'),
+				InitialCatalog = uri.Host,
+				DataSource = uri.AbsolutePath.Trim('/'),
 				UserID = uri.UserInfo.Split(':').First(),
 				Password = uri.UserInfo.Split(':').Last(),
 				MultipleActiveResultSets = true
 			}.ConnectionString;
-
-			Trace.TraceInformation("bla " + connectionString);
 
 			return connectionString;
 		}

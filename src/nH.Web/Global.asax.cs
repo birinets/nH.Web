@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Diagnostics;
 using System.Web;
 using System.Web.Http;
@@ -19,20 +18,6 @@ namespace nH.Web
 
 		protected void Application_Start()
 		{
-			foreach (ConnectionStringSettings c in ConfigurationManager.ConnectionStrings)
-			{
-				Trace.TraceInformation("Curr conn Name: " + c.Name);
-				Trace.TraceInformation("Curr conn Provider: " + c.ProviderName);
-				Trace.TraceInformation("Curr conn Str: " + c.ConnectionString);
-			}
-
-			var appSettings = ConfigurationManager.AppSettings;
-			for (var i = 0; i < appSettings.Count; i++)
-			{
-				Trace.TraceInformation("App sett #{0} Key: {1} Value: {2}", 
-					i, appSettings.GetKey(i), appSettings[i]);
-			}
-
 			_container = new ServiceContainer();
 
 			AreaRegistration.RegisterAllAreas();
@@ -54,9 +39,10 @@ namespace nH.Web
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
-			Trace.TraceInformation("Exception- ");
 			var exception = Server.GetLastError();
-			Trace.TraceInformation(exception.Message + " StackTrace: " + exception.StackTrace);
+			Trace.TraceInformation("Exception: {0} StackTrace: {1}",
+				exception.Message,
+				exception.StackTrace);
 		}
 	}
 }
