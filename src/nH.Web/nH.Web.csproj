@@ -61,8 +61,9 @@
     <Reference Include="Microsoft.Web.XmlTransform">
       <HintPath>..\..\packages\Microsoft.Web.Xdt.1.0.0\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
-    <Reference Include="nH">
-      <HintPath>..\..\packages\nH.0.2\lib\net45\nH.dll</HintPath>
+    <Reference Include="nH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\nH.0.3\lib\net45\nH.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
