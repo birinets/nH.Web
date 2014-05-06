@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.Configuration;
 using System.Diagnostics;
 using System.Web;
@@ -55,6 +54,7 @@ namespace nH.Web
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
+			Trace.TraceInformation("Exception- ");
 			var exception = Server.GetLastError();
 			Trace.TraceInformation(exception.Message + " StackTrace: " + exception.StackTrace);
 		}
