@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Http;
 using LightInject;
@@ -46,6 +47,8 @@ namespace nH.Web
 				Password = uri.UserInfo.Split(':').Last(),
 				MultipleActiveResultSets = true
 			}.ConnectionString;
+
+			Trace.TraceInformation(connectionString);
 
 			return connectionString;
 		}
