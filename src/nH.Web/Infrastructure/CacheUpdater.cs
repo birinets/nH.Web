@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using LightInject;
 
@@ -27,20 +28,27 @@ namespace nH.Web.Infrastructure
 		{
 			var context = _container.GetInstance<ICacheContext>();
 
-			context.Cache[CacheKeys.RootView] = (from e in GetRepository<LogEntry>().GetAll()
-				join s in GetRepository<Session>().GetAll() on e.SessionId equals s.Id
-				join r in GetRepository<Repository>().GetAll() on s.RepositoryId equals r.Id
-				orderby e.StartDate descending
-				select new RootView
-				{
-					Id = e.Id,
-					Created = e.StartDate,
-					Message = e.Message,
-					CommitId = s.CommitId,
-					RepoName = r.Name
-				})
-				.Take(50)
-				.OrderBy(e => e.Created);
+			try
+			{
+				context.Cache[CacheKeys.RootView] = (from e in GetRepository<LogEntry>().GetAll()
+					join s in GetRepository<Session>().GetAll() on e.SessionId equals s.Id
+					join r in GetRepository<Repository>().GetAll() on s.RepositoryId equals r.Id
+					orderby e.StartDate descending
+					select new RootView
+					{
+						Id = e.Id,
+						Created = e.StartDate,
+						Message = e.Message,
+						CommitId = s.CommitId,
+						RepoName = r.Name
+					})
+					.Take(50)
+					.OrderBy(e => e.Created);
+			}
+			catch (Exception ex)
+			{
+				Trace.TraceError("*Exception: {0} StackTrace: {1}", ex.Message, ex.StackTrace);
+			}
 		}
 
 		public IDataRepository<T> GetRepository<T>() where T : class
