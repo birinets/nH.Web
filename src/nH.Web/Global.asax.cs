@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Web;
 using System.Web.Http;
@@ -18,6 +19,13 @@ namespace nH.Web
 
 		protected void Application_Start()
 		{
+			foreach (ConnectionStringSettings c in ConfigurationManager.ConnectionStrings)
+			{
+				Trace.TraceInformation("Curr conn Name: " + c.Name);
+				Trace.TraceInformation("Curr conn Provider: " + c.ProviderName);
+				Trace.TraceInformation("Curr conn Str: " + c.ConnectionString);
+			}
+
 			_container = new ServiceContainer();
 
 			AreaRegistration.RegisterAllAreas();
