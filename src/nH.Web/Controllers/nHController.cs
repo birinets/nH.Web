@@ -29,9 +29,9 @@ namespace nH.Web.Controllers
 				return null;
 			}
 
-			return from e in (IQueryable<RootView>) _cacheContext.Cache[CacheKeys.RootView]
-				where e.Created > date
-				select e;
+			return from e in (IQueryable<RootView>)_cacheContext.Cache[CacheKeys.RootView]
+				   where e.Created > date
+				   select e;
 		}
 	}
 }
