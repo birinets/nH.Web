@@ -40,7 +40,7 @@ namespace nH.Web
 		protected void Application_Error(object sender, EventArgs e)
 		{
 			var exception = Server.GetLastError();
-			Trace.TraceInformation("Exception: {0} StackTrace: {1}",
+			Trace.TraceError("Exception: {0} StackTrace: {1}",
 				exception.Message,
 				exception.StackTrace);
 		}
