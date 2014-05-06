@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Diagnostics;
 using System.Web;
@@ -24,6 +25,13 @@ namespace nH.Web
 				Trace.TraceInformation("Curr conn Name: " + c.Name);
 				Trace.TraceInformation("Curr conn Provider: " + c.ProviderName);
 				Trace.TraceInformation("Curr conn Str: " + c.ConnectionString);
+			}
+
+			var appSettings = ConfigurationManager.AppSettings;
+			for (var i = 0; i < appSettings.Count; i++)
+			{
+				Trace.TraceInformation("App sett #{0} Key: {1} Value: {2}", 
+					i, appSettings.GetKey(i), appSettings[i]);
 			}
 
 			_container = new ServiceContainer();
