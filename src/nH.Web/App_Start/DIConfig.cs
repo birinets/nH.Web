@@ -20,7 +20,8 @@ namespace nH.Web
 			container.RegisterApiControllers();
 
 			container.Register<ICacheContext, CacheContext>(new PerContainerLifetime());
-			container.Register<DbContext, NuGetDataContext>(new PerContainerLifetime());
+			container.Register<DbContext>(f => new NuGetDataContext(GetConnectionString()),
+				new PerContainerLifetime());
 			container.Register<IDataRepository<Repository>, DataRepository<Repository, NuGetDataContext>>();
 			container.Register<IDataRepository<Session>, DataRepository<Session, NuGetDataContext>>();
 			container.Register<IDataRepository<LogEntry>, DataRepository<LogEntry, NuGetDataContext>>();
@@ -47,7 +48,7 @@ namespace nH.Web
 				MultipleActiveResultSets = true
 			}.ConnectionString;
 
-			Trace.TraceInformation(connectionString);
+			Trace.TraceInformation("bla " + connectionString);
 
 			return connectionString;
 		}
