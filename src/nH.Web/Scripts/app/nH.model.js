@@ -10,6 +10,7 @@
 		self.message = data.message;
 		self.created = data.created;
 		self.commitId = data.commitId;
+		self.type = data.type;
 
 		self.toJson = function () { return ko.toJSON(self); };
 	};

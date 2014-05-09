@@ -9,5 +9,6 @@ namespace nH.Web.Models
 		public string Message { get; set; }
 		public DateTime Created { get; set; }
 		public string CommitId { get; set; }
+		public string Type { get; set; }
 	}
 }

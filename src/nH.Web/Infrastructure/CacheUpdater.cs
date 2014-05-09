@@ -33,14 +33,15 @@ namespace nH.Web.Infrastructure
 				context.Cache[CacheKeys.RootView] = (from e in GetRepository<LogEntry>().GetAll()
 					join s in GetRepository<Session>().GetAll() on e.SessionId equals s.Id
 					join r in GetRepository<Repository>().GetAll() on s.RepositoryId equals r.Id
-					orderby e.StartDate descending
+					orderby e.Created descending
 					select new RootView
 					{
 						Id = e.Id,
-						Created = e.StartDate,
+						Created = e.Created,
 						Message = e.Message,
 						CommitId = s.CommitId,
-						RepoName = r.Name
+						RepoName = r.Name,
+						Type = e.Type.ToString()
 					})
 					.Take(50)
 					.OrderBy(e => e.Created);

@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using LightInject;
-
 using nH.Web.Infrastructure;
 
 namespace nH.Web

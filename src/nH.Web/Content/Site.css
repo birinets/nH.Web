@@ -119,6 +119,11 @@ header {
 		white-space: nowrap;
 	}
 
+		.main-content .entry-row.Error,
+		.main-content .entry-row.Critical {
+			color: red;
+		}
+
 	.main-content .created-cell,
 	.main-content .repo-cell,
 	.main-content .message-cell,

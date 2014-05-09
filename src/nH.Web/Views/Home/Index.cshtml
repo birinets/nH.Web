@@ -13,7 +13,7 @@
 <div id="main-content" class="main-content">
 	<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
 	<section id="lists" data-bind="foreach: list, visible: list().length > 0">
-		<div class="entry-row">
+		<div data-bind="css: type" class="entry-row">
 			<div data-bind="date: created, scroll: true" class="created-cell"></div>
 			<div data-bind="text: repo" class="repo-cell"></div>
 			<div data-bind="commitText: commitId" class="commit-cell"></div>
