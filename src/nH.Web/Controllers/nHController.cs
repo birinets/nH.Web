@@ -6,11 +6,11 @@ using nH.Web.Models;
 
 namespace nH.Web.Controllers
 {
-	public class nHController : ApiController
+	public class NhController : ApiController
 	{
 		private readonly ICacheContext _cacheContext;
 
-		public nHController(ICacheContext cacheContext)
+		public NhController(ICacheContext cacheContext)
 		{
 			_cacheContext = cacheContext;
 		}

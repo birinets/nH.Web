@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Data.Entity;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Web.Http;
 using LightInject;
 
+using nH.Data;
 using nH.Data.Models;
 using nH.Data.Repositories;
 using nH.Web.Models;
@@ -21,10 +21,11 @@ namespace nH.Web
 			container.RegisterApiControllers();
 
 			container.Register<ICacheContext, CacheContext>(new PerContainerLifetime());
-			container.Register<DbContext>(f => new NuGetDataContext(GetConnectionString()), new PerContainerLifetime());
-			container.Register<IDataRepository<Repository>, DataRepository<Repository, NuGetDataContext>>();
-			container.Register<IDataRepository<Session>, DataRepository<Session, NuGetDataContext>>();
-			container.Register<IDataRepository<LogEntry>, DataRepository<LogEntry, NuGetDataContext>>();
+			container.Register<IDbContext>(f => new NhDbContext(GetConnectionString()), new PerContainerLifetime());
+			container.Register<IPluralizeProxy, PluralizeProxy>();
+			container.Register<IDataRepository<Repository>, DataRepository<Repository>>();
+			container.Register<IDataRepository<Session>, DataRepository<Session>>();
+			container.Register<IDataRepository<LogEntry>, DataRepository<LogEntry>>();
 			container.Register(factory => PluralizationService.CreateService(CultureInfo.GetCultureInfo("en")));
 
 			container.EnablePerWebRequestScope();
