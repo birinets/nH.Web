@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using StackExchange.Profiling
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -18,6 +19,7 @@
 	@Scripts.Render("~/bundles/jqueryui")
 	@Scripts.Render("~/bundles/knockout")
 	@Scripts.Render("~/bundles/app")
+	@MiniProfiler.RenderIncludes()
 	@RenderSection("scripts", required: false)
 </body>
 </html>

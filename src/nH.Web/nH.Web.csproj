@@ -59,6 +59,9 @@
       <HintPath>..\..\packages\LightInject.WebApi.1.0.0.1\lib\net45\LightInject.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler">
+      <HintPath>..\..\packages\MiniProfiler.3.0.10\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
     <Reference Include="nH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\nH.0.22\lib\net451\nH.dll</HintPath>

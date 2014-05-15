@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using LightInject;
+using StackExchange.Profiling;
+
 using nH.Web.Infrastructure;
 
 namespace nH.Web
@@ -34,6 +36,19 @@ namespace nH.Web
 		{
 			_updater.Dispose();
 			_container.Dispose();
+		}
+
+		protected void Application_BeginRequest()
+		{
+			if (Request.IsLocal)
+			{
+				MiniProfiler.Start();
+			}
+		}
+
+		protected void Application_EndRequest()
+		{
+			MiniProfiler.Stop();
 		}
 
 		protected void Application_Error(object sender, EventArgs e)

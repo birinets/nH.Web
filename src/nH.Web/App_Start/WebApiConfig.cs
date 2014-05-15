@@ -1,10 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Threading.Tasks;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Newtonsoft.Json.Serialization;
 
 namespace nH.Web
