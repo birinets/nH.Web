@@ -10,6 +10,8 @@ using LightInject;
 using nH.Data;
 using nH.Data.Models;
 using nH.Data.Repositories;
+using nH.Services;
+using nH.Tracing;
 using nH.Web.Models;
 
 namespace nH.Web
@@ -23,6 +25,7 @@ namespace nH.Web
 			container.Register<ICacheContext, CacheContext>(new PerContainerLifetime());
 			container.Register<IDbContext>(f => new NhDbContext(GetConnectionString()), new PerContainerLifetime());
 			container.Register<IPluralizeProxy, PluralizeProxy>();
+			container.Register<IDiagnosticTrace, DiagnosticTrace>();
 			container.Register<IDataRepository<Repository>, DataRepository<Repository>>();
 			container.Register<IDataRepository<Session>, DataRepository<Session>>();
 			container.Register<IDataRepository<LogEntry>, DataRepository<LogEntry>>();

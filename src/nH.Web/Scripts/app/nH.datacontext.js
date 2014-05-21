@@ -66,7 +66,7 @@ window.nHApp.datacontext = (function () {
 		if (antiForgeryToken) {
 			options.headers = {
 				'RequestVerificationToken': antiForgeryToken
-			}
+			};
 		}
 		return $.ajax(url, options);
 	}

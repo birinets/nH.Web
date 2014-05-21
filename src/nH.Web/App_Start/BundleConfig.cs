@@ -34,6 +34,14 @@ namespace nH.Web
 				"~/Scripts/app/nH.model.js",
 				"~/Scripts/app/nH.viewmodel.js"));
 
+			bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+				"~/Scripts/angular.js",
+				"~/Scripts/angular-route.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/ngApp").Include(
+				"~/Scripts/ngApp/app.js",
+				"~/Scripts/ngApp/controllers.js"));
+
 			bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
 						"~/Content/themes/base/jquery.ui.core.css",
 						"~/Content/themes/base/jquery.ui.resizable.css",

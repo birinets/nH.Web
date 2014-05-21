@@ -10,6 +10,8 @@
 	}
 }
 
+@Scripts.Render("~/bundles/knockout")
+
 <div id="main-content" class="main-content">
 	<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
 	<section id="lists" data-bind="foreach: list, visible: list().length > 0">

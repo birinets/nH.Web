@@ -1,7 +1,19 @@
 ﻿@{
 	ViewBag.Title = "nH";
 }
+@functions{
+	public string GetAntiForgeryToken()
+	{
+		string cookieToken, formToken;
+		AntiForgery.GetTokens(null, out cookieToken, out formToken);
+		return cookieToken + ":" + formToken;
+	}
+}
+
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/ngApp")
 
 <div id="main-content" class="main-content">
-	Hi!
+	<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+	<div ng-view></div>
 </div>
